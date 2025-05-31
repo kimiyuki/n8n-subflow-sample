@@ -145,6 +145,10 @@ curl -X POST https://<あなたの-n8nドメイン>/webhook/workflowB-trigger-pa
 
 ---
 
+<img width="829" alt="image" src="https://github.com/user-attachments/assets/db42ad2a-6e16-4f77-a699-fbcc6611b41f" />
+<img width="926" alt="image" src="https://github.com/user-attachments/assets/81d03289-3472-455c-b625-f96b781b96da" />
+
+
 ## ライセンス
 
 このサンプルコードは MIT ライセンスの下で提供されています。
