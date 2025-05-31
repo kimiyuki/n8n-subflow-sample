@@ -39,21 +39,6 @@
     },
     {
       "parameters": {
-        "source": "parameter",
-        "workflowJson": "={{ $json }}",
-        "options": {}
-      },
-      "id": "c38b47cf-7f4c-42a0-87ac-82015cfb3ad3",
-      "name": "Execute Workflow (Workflow B)",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1,
-      "position": [
-        400,
-        180
-      ]
-    },
-    {
-      "parameters": {
         "workflowId": {
           "__rl": true,
           "value": "ucFmwpNhJmQoyN0v",
@@ -108,7 +93,7 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "955ac3b1-d966-4f67-bd42-9553a557d37e",
+  "versionId": "83d0a302-81b0-4745-b808-29b7dd387246",
   "meta": {
     "instanceId": "f9c4964018ff4352b29842f5ab48ea60e5757fd3d0966c762e54f71ca6aede5b"
   },
