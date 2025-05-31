@@ -1,0 +1,117 @@
+{
+  "name": "workflowA",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "trigger",
+        "options": {
+          "responseData": {
+            "status": "ok",
+            "msg": "受け取りました。非同期処理を開始します。"
+          }
+        }
+      },
+      "id": "d5f81bda-cc63-4fe3-a3d1-e1efce3b95ae",
+      "name": "Webhook (同期受信)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        -100
+      ],
+      "webhookId": "153617da-2771-4d12-b062-3f42a4741f88"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "f8c74f3f-0933-41db-84fa-3e7346c34cb8",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        100,
+        -100
+      ],
+      "alwaysOutputData": true,
+      "notesInFlow": true
+    },
+    {
+      "parameters": {
+        "source": "parameter",
+        "workflowJson": "={{ $json }}",
+        "options": {}
+      },
+      "id": "c38b47cf-7f4c-42a0-87ac-82015cfb3ad3",
+      "name": "Execute Workflow (Workflow B)",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        400,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "ucFmwpNhJmQoyN0v",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -160,
+        180
+      ],
+      "id": "3dcc023e-5386-460e-b548-a1aefea27f09",
+      "name": "Execute Workflow"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook (同期受信)": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Webhook": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "955ac3b1-d966-4f67-bd42-9553a557d37e",
+  "meta": {
+    "instanceId": "f9c4964018ff4352b29842f5ab48ea60e5757fd3d0966c762e54f71ca6aede5b"
+  },
+  "id": "RTzq8gxtNt6WpvWP",
+  "tags": []
+}

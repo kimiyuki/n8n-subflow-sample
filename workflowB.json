@@ -1,0 +1,107 @@
+{
+  "name": "workflowB",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "792f8c76-caec-4e55-a53d-4dc5c7e6093d",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        140,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 10,
+        "unit": "seconds"
+      },
+      "id": "d4c4b325-14c6-46fc-bf86-bc578feadfd9",
+      "name": "Wait 5秒",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        340,
+        -120
+      ],
+      "webhookId": "a56bf30c-e133-4e04-9110-b0ad1b2f0ab3"
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "https://hooks.slack.com/services/<<YOUR_WEBHOOK_URL>",
+        "responseFormat": "string",
+        "jsonParameters": true,
+        "options": {},
+        "bodyParametersJson": "={\"text\": \"{{ $json['body']['foo'] }}\"}"
+      },
+      "id": "20738cde-4508-4224-aed6-4edbcbf57b83",
+      "name": "HTTP Request (jsonbin.io)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        540,
+        -120
+      ]
+    }
+  ],
+  "pinData": {
+    "HTTP Request (jsonbin.io)": [
+      {
+        "json": {
+          "headers": {
+            "host": "localhost:5678",
+            "user-agent": "curl/8.7.1",
+            "accept": "*/*",
+            "content-type": "application/json",
+            "content-length": "16"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "foo": "bar"
+          },
+          "webhookUrl": "http://localhost:5678/webhook/trigger",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Wait 5秒",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5秒": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request (jsonbin.io)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Tokyo",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "a2016b68-b969-4024-bb08-dd75ea152af8",
+  "meta": {
+    "instanceId": "f9c4964018ff4352b29842f5ab48ea60e5757fd3d0966c762e54f71ca6aede5b"
+  },
+  "id": "ucFmwpNhJmQoyN0v",
+  "tags": []
+}
